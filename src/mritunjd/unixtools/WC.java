@@ -1,20 +1,20 @@
 package mritunjd.unixtools;
-import mritunjd.fs.MyFileReader;
-public class WC{
-    public int countWords(String text){
+
+public class WC {
+    String text;
+
+    public WC(String text) {
+        this.text = text;
+    }
+    public int countWords() {
         return text.split("\\w+").length;
     }
-    public int countLines(String text){
+
+    public int countLines() {
         return text.split("\\n+").length;
     }
-    public int countChars(String text){
+
+    public int countChars() {
         return text.length();
-    }
-    public static void main(String[] args) {
-        MyFileReader wfr;
-        wfr = new MyFileReader();
-        String text = wfr.readFile(args[0]);
-        WC wc = new WC();
-        System.out.println("\t"+wc.countLines(text)+"\t"+wc.countWords(text)+"\t"+wc.countChars(text)+"\t"+args[0]);
     }
 }
