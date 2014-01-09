@@ -3,32 +3,22 @@ package mritunjd.unixtools.cli;
 import mritunjd.fs.MyFileReader;
 import mritunjd.unixtools.Head;
 
-class Option {
-    int noOfLines;
-    String fileName;
-
-    Option(int noOfLines, String fileName) {
-        this.noOfLines = noOfLines;
-        this.fileName = fileName;
-    }
-}
-
 public class HeadClient {
-    public Option getUserInput(String[] args) {
+    public InputOptions getUserInput(String[] args) {
         int noOfLines;
         String fileNm;
         if (args.length > 1) {
             noOfLines = Integer.parseInt(args[0].substring(1));
             fileNm = args[1];
-            return new Option(noOfLines, fileNm);
+            return new InputOptions(noOfLines, fileNm);
         }
         noOfLines = 10;
         fileNm = args[0];
-        return new Option(noOfLines, fileNm);
+        return new InputOptions(noOfLines, fileNm);
     }
 
     public static void main(String[] args) {
-        Option userInput = new HeadClient().getUserInput(args);
+        InputOptions userInput = new mritunjd.unixtools.cli.HeadClient().getUserInput(args);
         System.out.println(userInput.fileName);
         String text = new MyFileReader().readFile(userInput.fileName);
         Head head = new Head(userInput.noOfLines, text);

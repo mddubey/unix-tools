@@ -8,10 +8,10 @@ public class HeadTest {
     @Test
     public void testGetLines() throws Exception {
         String input = "I am here.\n My name is Mritunjay\n How are You";
-        Head head = new Head(2, input);
+        Tail tail = new Tail(2, input);
         String[] expected = {"I am here.", " My name is Mritunjay"};
 
-        String[] actual = head.getLines();
+        String[] actual = tail.getLines();
         assertArrayEquals(expected, actual);
     }
 }
