@@ -13,7 +13,7 @@ public class WCTest {
 
         int actual = wc.countWords();
 
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -24,7 +24,7 @@ public class WCTest {
 
         int actual = wc.countLines();
 
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -35,6 +35,6 @@ public class WCTest {
 
         int actual = wc.countChars();
 
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 }
