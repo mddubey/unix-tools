@@ -20,6 +20,6 @@ public class SpaceReducerClient {
         text = new MyFileReader().readFile(args[0]);
         SpaceReducer reducer = new SpaceReducerClient(text).getReducer();
         String newText = reducer.reduceSpaces();
-        new MyFileWritter().write(args[1],newText);
+        new MyFileWritter().writeFile(args[1], newText);
     }
 }
