@@ -7,7 +7,7 @@ public class FieldCutter {
         this.text = text;
     }
 
-    public String[] getFields(int fieldNo, String delimiter){
+    public String[] getFields(int fieldNo, String delimiter) {
         String linesInText[] = text.split("\n");
         String fields[] = new String[linesInText.length];
         int index = 0;
@@ -15,7 +15,7 @@ public class FieldCutter {
         for (String line : linesInText) {
             String words[] = line.split(delimiter);
             fields[index] = "";
-            if(fieldNo < words.length)
+            if (fieldNo < words.length)
                 fields[index] = words[fieldNo];
             index++;
         }
@@ -24,5 +24,13 @@ public class FieldCutter {
 
     public String[] getFields(int fieldNo) {
         return getFields(fieldNo, " ");
+    }
+
+    public String[] getFields(String delimiter) {
+        return getFields(1, delimiter);
+    }
+
+    public String[] getFields() {
+        return getFields(1, " ");
     }
 }

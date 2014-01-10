@@ -38,4 +38,27 @@ public class FieldCutterTest {
 
         Assert.assertArrayEquals(expected, actual);
     }
+
+
+    @Test
+    public void test_gives_first_field_when_no_field_no_are_specified() throws Exception {
+        String input = "Mritunjay:123:UP:India\nPrateek:490:Delhi:India\nManish:230:UP:India";
+        String[] expected = {"Mritunjay", "Prateek", "Manish"};
+        FieldCutter cutter = new FieldCutter(input);
+        String delimiter = ":";
+        String[] actual = cutter.getFields(delimiter);
+
+        Assert.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void test_when_no_delimiter_and_no_fieldNo() throws Exception {
+        String input = "Mritunjay 123 UP India\nPrateek 490 Delhi India\nManish 230 UP India";
+        String[] expected = {"Mritunjay", "Prateek", "Manish"};
+        FieldCutter cutter = new FieldCutter(input);
+
+        String[] actual = cutter.getFields();
+
+        Assert.assertArrayEquals(expected, actual);
+    }
 }
