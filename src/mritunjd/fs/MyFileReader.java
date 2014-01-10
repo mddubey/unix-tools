@@ -1,25 +1,27 @@
 package mritunjd.fs;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
 public class MyFileReader {
     public String readFile(String filename) {
         String line;
-        String resLine = "";
+        StringBuilder sb = new StringBuilder("");
         try {
             BufferedReader br;
             br = new BufferedReader(new FileReader(filename));
             while ((line = br.readLine()) != null) {
-                line = line.concat("\n");
-                resLine = resLine.concat(line);
+                sb.append(line).append("\r\n");
             }
-            return resLine;
+            return sb.toString().trim();
+        } catch (FileNotFoundException e){
+            System.err.println("File not Found");
+            return "";
         } catch (IOException e) {
-            System.out.println("unable to process");
+            System.err.println("unable to Read");
             return "";
         }
-
     }
 }
