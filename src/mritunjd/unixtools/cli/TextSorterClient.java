@@ -4,7 +4,7 @@ import mritunjd.fs.MyFileReader;
 import mritunjd.unixtools.TextSorter;
 import mritunjd.unixtools.helper.MyArray;
 
-//class
+
 public class TextSorterClient {
     TextSorter sorter;
 
@@ -17,6 +17,11 @@ public class TextSorterClient {
     }
 
     public static void main(String[] args) {
+        if (args.length < 1) {
+            System.err.println("Arguments not found....");
+            System.err.println("Usage:  FieldCutterClient    File Name  [Option]");
+            System.exit(1);
+        }
         String text = new MyFileReader().readFile(args[0]);
         TextSorter sorter = new TextSorterClient(text).getSorter();
         String[] sortedLines;

@@ -2,18 +2,19 @@ package mritunjd.unixtools.cli;
 
 import mritunjd.fs.MyFileReader;
 import mritunjd.unixtools.FieldCutter;
+import mritunjd.unixtools.helper.MyArray;
 
-class CutInputOptions{
+class CutInputOptions {
     private String filename;
     private int fieldNo = 1;
     private String delemiter = " ";
 
     CutInputOptions(String[] inputs) {
         for (String input : inputs) {
-            if(input.startsWith("-d"))
-                this.delemiter = input.substring(2);
-            else if(input.startsWith("-f"))
-                this.fieldNo = Integer.parseInt(input.substring(2));
+            if (input.startsWith("-d"))
+                this.delemiter = input.substring(3, 4);
+            else if (input.startsWith("-f"))
+                this.fieldNo = Integer.parseInt(input.substring(3, 4));
             else this.filename = input;
         }
     }
@@ -43,14 +44,16 @@ public class FeildCutterClient {
     }
 
     public static void main(String[] args) {
+        if (args.length < 1) {
+            System.err.println("Arguments not found....");
+            System.err.println("Usage:  FieldCutterClient  [Option]    File Name");
+            System.exit(1);
+        }
         CutInputOptions userInputs = new CutInputOptions(args);
         String text = new MyFileReader().readFile(userInputs.getFilename());
         FieldCutter cutter = new FeildCutterClient(text).getCutter();
-        String[] fields = cutter.getFields(userInputs.getFieldNo(),userInputs.getDelemiter());
-        StringBuilder sb = new StringBuilder("");
-        for (String field : fields) {
-            sb.append(field).append("\n");
-        }
-        System.out.println(sb.toString().trim());
+        String[] fields = cutter.getFields(userInputs.getFieldNo(), userInputs.getDelemiter());
+        String result = new MyArray(fields).join("\n");
+        System.out.println(result);
     }
 }
