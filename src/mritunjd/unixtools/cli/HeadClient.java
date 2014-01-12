@@ -2,6 +2,7 @@ package mritunjd.unixtools.cli;
 
 import mritunjd.fs.MyFileReader;
 import mritunjd.unixtools.Head;
+import mritunjd.unixtools.helper.MyArray;
 
 public class HeadClient {
     public InputOptions getUserInput(String[] args) {
@@ -18,16 +19,16 @@ public class HeadClient {
     }
 
     public static void main(String[] args) {
+        if(args.length < 1){
+            System.err.println("Arguments not found....");
+            System.err.println("Usage:  HeadClient  [Option]    [File Name]");
+            System.exit(1);
+        }
         InputOptions userInput = new mritunjd.unixtools.cli.HeadClient().getUserInput(args);
-        System.out.println(userInput.fileName);
         String text = new MyFileReader().readFile(userInput.fileName);
         Head head = new Head(userInput.noOfLines, text);
         String[] lines = head.getLines();
-        StringBuilder sb = new StringBuilder();
-        for (String line : lines) {
-            sb.append(line);
-            sb.append("\n");
-        }
-        System.out.println(sb.toString());
+        String result = new MyArray(lines).join("\r\n");
+        System.out.println(result);
     }
 }

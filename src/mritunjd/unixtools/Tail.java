@@ -12,7 +12,7 @@ public class Tail {
         String[] lines = text.split("\n");
         String[] result = new String[limit];
         if(lines.length < limit)
-            limit = lines.length;
+            return lines;
         int index = 0;
         for (int i = (lines.length - limit); i < lines.length; i++) {
             result[index] = lines[i];

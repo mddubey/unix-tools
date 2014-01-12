@@ -11,7 +11,7 @@ public class Head {
     public String[] getLines(){
         String[] lines = text.split("\n");
         if(lines.length < limit)
-            limit = lines.length;
+            return lines;
         String[] result = new String[limit];
         System.arraycopy(lines, 0, result, 0, limit);
         return result;

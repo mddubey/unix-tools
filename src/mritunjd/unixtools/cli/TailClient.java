@@ -18,6 +18,11 @@ public class TailClient {
     }
 
     public static void main(String[] args) {
+        if(args.length < 1){
+            System.err.println("Arguments not found....");
+            System.err.println("Usage:  TailClient  [Option]    [File Name]");
+            System.exit(1);
+        }
         InputOptions userInput;
         userInput = new TailClient().getUserInput(args);
         String text = new MyFileReader().readFile(userInput.fileName);
