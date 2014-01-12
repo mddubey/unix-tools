@@ -16,6 +16,11 @@ public class SpaceReducerClient {
     }
 
     public static void main(String[] args) {
+        if(args.length < 2){
+            System.err.println("Source and Destination Files not found");
+            System.err.println("Usage:   SpaceReducerClient  SourceFileName  DestinationFileName");
+            System.exit(1);
+        }
         String text;
         text = new MyFileReader().readFile(args[0]);
         SpaceReducer reducer = new SpaceReducerClient(text).getReducer();

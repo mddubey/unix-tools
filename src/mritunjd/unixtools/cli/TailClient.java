@@ -2,6 +2,7 @@ package mritunjd.unixtools.cli;
 
 import mritunjd.fs.MyFileReader;
 import mritunjd.unixtools.Tail;
+import mritunjd.unixtools.helper.MyArray;
 
 public class TailClient {
     public InputOptions getUserInput(String[] args) {
@@ -28,11 +29,7 @@ public class TailClient {
         String text = new MyFileReader().readFile(userInput.fileName);
         Tail tail = new Tail(userInput.noOfLines, text);
         String[] lines = tail.getLines();
-        StringBuilder sb = new StringBuilder();
-        for (String line : lines) {
-            sb.append(line);
-            sb.append("\n");
-        }
-        System.out.println(sb.toString());
+        String result = new MyArray(lines).join("\r\n");
+        System.out.println(result);
     }
 }
