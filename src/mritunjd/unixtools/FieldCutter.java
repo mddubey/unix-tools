@@ -22,6 +22,25 @@ public class FieldCutter {
         return fields;
     }
 
+    public String[] getFieldsInLine(int[] fieldNumbers, String delimiter){
+        String linesInText[] = text.split("\n");
+        int index = 0;
+        String[] resultLines = new String[linesInText.length];
+        for (String line : linesInText) {
+            StringBuilder lineToReturn = new StringBuilder("");
+            String[] fieldsInLine = line.split(delimiter);
+            for (int fieldNo : fieldNumbers) {
+                if(fieldNo < fieldsInLine.length)
+                    lineToReturn.append(fieldsInLine[fieldNo-1]);
+                else
+                    lineToReturn.append("");
+                lineToReturn.append(delimiter);
+            }
+            resultLines[index++] = lineToReturn.toString().trim();
+        }
+        return resultLines;
+    }
+
     public String[] getFields(int fieldNo) {
         return getFields(fieldNo, " ");
     }

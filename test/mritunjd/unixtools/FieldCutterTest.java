@@ -61,4 +61,15 @@ public class FieldCutterTest {
 
         Assert.assertArrayEquals(expected, actual);
     }
+
+    @Test
+    public void test_gives_multiple_fields_in_cut() throws Exception {
+        String input = "Mritunjay 123 UP India\nPrateek 490 Delhi India\nManish 230 UP India";
+        String[] expected = {"Mritunjay 123", "Prateek 490", "Manish 230"};
+        FieldCutter cutter = new FieldCutter(input);
+        int[] fieldNos = {1,2};
+        String[] actual = cutter.getFieldsInLine(fieldNos," ");
+
+        Assert.assertArrayEquals(expected, actual);
+    }
 }
