@@ -21,4 +21,10 @@ public class TextSorter {
         Collections.reverse(Arrays.asList(sortedLines));
         return sortedLines;
     }
+
+    public String[] sortNumerically() {
+        String[] lines = text.split("\n");
+        Collections.sort(Arrays.asList(lines));
+        return lines;
+    }
 }

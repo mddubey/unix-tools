@@ -25,4 +25,17 @@ public class TextSorterTest {
 
         Assert.assertArrayEquals(expected,actual);
     }
+
+    @Test
+    public void test_sorts_multiple_lines_with_single_field_numerically(){
+        String input = "11\n2\n21\n3";
+        String[] expected = {"2","3","11","21"};
+        TextSorter sorter = new TextSorter(input);
+
+        String[] actual = sorter.sortNumerically();
+
+        Assert.assertArrayEquals(expected,actual);
+    }
+
+
 }
