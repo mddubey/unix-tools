@@ -4,6 +4,8 @@ import mritunjd.fs.MyFileReader;
 import mritunjd.unixtools.Tail;
 import mritunjd.unixtools.helper.MyArray;
 
+import java.io.File;
+
 public class TailClient {
     public InputOptions getUserInput(String[] args) {
         int noOfLines;
@@ -26,7 +28,7 @@ public class TailClient {
         }
         InputOptions userInput;
         userInput = new TailClient().getUserInput(args);
-        String text = new MyFileReader().readFile(userInput.fileName);
+        String text = new MyFileReader().readFile(new File(userInput.fileName));
         Tail tail = new Tail(userInput.noOfLines, text);
         String[] lines = tail.getLines();
         String result = new MyArray(lines).join("\r\n");

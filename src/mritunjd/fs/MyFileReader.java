@@ -1,12 +1,9 @@
 package mritunjd.fs;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 public class MyFileReader {
-    public String readFile(String filename) {
+    public String readFile(File filename) {
         String line;
         StringBuilder sb = new StringBuilder("");
         try {

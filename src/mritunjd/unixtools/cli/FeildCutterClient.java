@@ -4,6 +4,8 @@ import mritunjd.fs.MyFileReader;
 import mritunjd.unixtools.FieldCutter;
 import mritunjd.unixtools.helper.MyArray;
 
+import java.io.File;
+
 class CutInputOptions {
     private String filename;
     private int fieldNo = 1;
@@ -50,7 +52,8 @@ public class FeildCutterClient {
             System.exit(1);
         }
         CutInputOptions userInputs = new CutInputOptions(args);
-        String text = new MyFileReader().readFile(userInputs.getFilename());
+        File file = new File(userInputs.getFilename());
+        String text = new MyFileReader().readFile(file);
         FieldCutter cutter = new FeildCutterClient(text).getCutter();
         String[] fields = cutter.getFields(userInputs.getFieldNo(), userInputs.getDelemiter());
         String result = new MyArray(fields).join("\n");

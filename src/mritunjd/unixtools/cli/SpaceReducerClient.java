@@ -4,6 +4,8 @@ import mritunjd.fs.MyFileReader;
 import mritunjd.fs.MyFileWritter;
 import mritunjd.unixtools.SpaceReducer;
 
+import java.io.File;
+
 public class SpaceReducerClient {
     private SpaceReducer reducer;
 
@@ -22,9 +24,9 @@ public class SpaceReducerClient {
             System.exit(1);
         }
         String text;
-        text = new MyFileReader().readFile(args[0]);
+        text = new MyFileReader().readFile(new File(args[0]));
         SpaceReducer reducer = new SpaceReducerClient(text).getReducer();
         String newText = reducer.reduceSpaces();
-        new MyFileWritter().writeFile(args[1], newText);
+        new MyFileWritter().writeFile(new File(args[1]), newText);
     }
 }

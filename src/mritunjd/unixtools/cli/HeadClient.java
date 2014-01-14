@@ -4,6 +4,8 @@ import mritunjd.fs.MyFileReader;
 import mritunjd.unixtools.Head;
 import mritunjd.unixtools.helper.MyArray;
 
+import java.io.File;
+
 public class HeadClient {
     public InputOptions getUserInput(String[] args) {
         int noOfLines;
@@ -25,7 +27,8 @@ public class HeadClient {
             System.exit(1);
         }
         InputOptions userInput = new mritunjd.unixtools.cli.HeadClient().getUserInput(args);
-        String text = new MyFileReader().readFile(userInput.fileName);
+        File file = new File(userInput.fileName);
+        String text = new MyFileReader().readFile(file);
         Head head = new Head(userInput.noOfLines, text);
         String[] lines = head.getLines();
         String result = new MyArray(lines).join("\r\n");

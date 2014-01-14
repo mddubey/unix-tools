@@ -6,9 +6,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class MyFileWritter {
-    public void writeFile(String fileName, String textToWrite) {
+    public void writeFile(File file, String textToWrite) {
         try {
-            File file = new File(fileName);
             if (!file.exists()) {
                 file.createNewFile();
             }
