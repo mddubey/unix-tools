@@ -6,12 +6,13 @@ public class WC {
     public WC(String text) {
         this.text = text;
     }
+
     public int countWords() {
         return text.split("\\w+").length;
     }
 
     public int countLines() {
-        return text.split("\\n+").length;
+        return text.split("(\\n+)").length - 1;
     }
 
     public int countChars() {

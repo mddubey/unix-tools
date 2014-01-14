@@ -35,10 +35,10 @@ class CutInputOptions {
     }
 }
 
-public class FeildCutterClient {
+public class FieldCutterClient {
     FieldCutter cutter;
 
-    public FeildCutterClient(String text) {
+    public FieldCutterClient(String text) {
         this.cutter = new FieldCutter(text);
     }
 
@@ -55,7 +55,7 @@ public class FeildCutterClient {
         CutInputOptions userInputs = new CutInputOptions(args);
         File file = new File(userInputs.getFilename());
         String text = new MyFileReader().readFile(file);
-        FieldCutter cutter = new FeildCutterClient(text).getCutter();
+        FieldCutter cutter = new FieldCutterClient(text).getCutter();
         String[] fields = cutter.getFields(userInputs.getFieldNo(), userInputs.getDelemiter());
         String result = new MyArray(fields).join("\n");
         System.out.println(result);
