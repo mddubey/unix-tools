@@ -14,9 +14,10 @@ class CutInputOptions {
     CutInputOptions(String[] inputs) {
         for (String input : inputs) {
             if (input.startsWith("-d"))
-                this.delemiter = input.substring(3, 4);
-            else if (input.startsWith("-f"))
-                this.fieldNo = Integer.parseInt(input.substring(3, 4));
+                this.delemiter = input.substring(2);
+            else if (input.startsWith("-f")) {
+                this.fieldNo = Integer.parseInt(input.substring(2));
+            }
             else this.filename = input;
         }
     }

@@ -8,6 +8,9 @@ public class SpaceReducer {
     }
 
     public String reduceSpaces() {
-        return text.replaceAll(" +", " ").trim();
+        String textWithSingleSpaces = text.replaceAll(" +", " ");
+        String textWithoutSpaceAfterNewLine = textWithSingleSpaces.replaceAll("\n ","\n");
+        String textWithoutNewLineAfterSpace = textWithoutSpaceAfterNewLine.replaceAll(" \n","\n");
+        return textWithoutNewLineAfterSpace.trim();
     }
 }
