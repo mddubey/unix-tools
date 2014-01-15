@@ -5,16 +5,47 @@ import org.junit.Test;
 
 public class UniqTest {
     @Test
-    public void testGetUniqueLines() throws Exception {
-        String input = "Ram\nSam\nSam\nTum\nTum\nlove";
-        String expected = "Ram\nSam\nTum\nlove";
+    public void testGivesUniqLinesFromString() throws Exception {
+        String input = "Ram\nSam\nSam\nTam\nTam\nlove";
+        String expected = "Ram\nSam\nTam\nlove";
 
         Uniq uniq = new Uniq(input);
-        Assert.assertEquals(expected,uniq.getUniqLines());
+
+        Assert.assertEquals(expected, uniq.getUniqLines());
     }
 
     @Test
-    public void test_gives_unique_lines_from_given_string() throws Exception {
+    public void testFiltersOnlyAdjucentDuplicateLines() throws Exception {
+        String input = "Ram\nSam\nSam\nTam\nTam\nlove\nSam\nRam";
+        String expected = "Ram\nSam\nTam\nlove\nSam\nRam";
+
+        Uniq uniq = new Uniq(input);
+
+        Assert.assertEquals(expected, uniq.getUniqLines());
+    }
+
+    @Test
+    public void testPerformsCaseSensitiveComparisionOfTwoLines() throws Exception {
+        String input = "Ram\nSam\nSam\nTam\nTam\ntam\nlove";
+        String expected = "Ram\nSam\nTam\ntam\nlove";
+
+        Uniq uniq = new Uniq(input);
+
+        Assert.assertEquals(expected, uniq.getUniqLines());
+    }
+
+    @Test
+    public void testDoesnotGiveLastLineWhenItMatchesWithSecondLastLine() throws Exception {
+        String input = "Ram\nSam\nSam\nTam\nTam\ntam\nlove\nlove";
+        String expected = "Ram\nSam\nTam\ntam\nlove";
+
+        Uniq uniq = new Uniq(input);
+
+        Assert.assertEquals(expected, uniq.getUniqLines());
+    }
+
+    @Test
+    public void testGivesUniqueLinesFromGivenString() throws Exception {
         String input = "I am Here.\n" +
                 "I am Here.\n" +
                 "today is Monday\n" +
@@ -26,6 +57,6 @@ public class UniqTest {
 
         String actual = uniq.getUniqLines();
 
-        Assert.assertEquals("Failed",expected,actual);
+        Assert.assertEquals(expected, actual);
     }
 }
