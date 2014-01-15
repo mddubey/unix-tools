@@ -8,7 +8,7 @@ import java.io.File;
 
 class CutInputOptions {
     private String filename;
-    private int fieldNo = 1;
+    private int[] fieldNo = {1};
     private String delemiter = " ";
 
     CutInputOptions(String[] inputs) {
@@ -16,7 +16,12 @@ class CutInputOptions {
             if (input.startsWith("-d"))
                 this.delemiter = input.substring(2);
             else if (input.startsWith("-f")) {
-                this.fieldNo = Integer.parseInt(input.substring(2));
+                String[] fieldsAsStrings = input.substring(2).split(",");
+                int[] fieldsAsNumeric = new int[fieldsAsStrings.length];
+                for (int i = 0; i < fieldsAsStrings.length; i++) {
+                    fieldsAsNumeric[i] = Integer.parseInt(fieldsAsStrings[i]);
+                }
+                this.fieldNo = fieldsAsNumeric;
             }
             else this.filename = input;
         }
@@ -26,7 +31,7 @@ class CutInputOptions {
         return filename;
     }
 
-    public int getFieldNo() {
+    public int[] getFieldNo() {
         return fieldNo;
     }
 
@@ -56,8 +61,8 @@ public class FieldCutterClient {
         File file = new File(userInputs.getFilename());
         String text = new MyFileReader().readFile(file);
         FieldCutter cutter = new FieldCutterClient(text).getCutter();
-        String[] fields = cutter.getFields(userInputs.getFieldNo(), userInputs.getDelemiter());
-        String result = new MyArray(fields).join("\n");
+        String[] linesAfterCut = cutter.cutLines(userInputs.getFieldNo(), userInputs.getDelemiter());
+        String result = new MyArray(linesAfterCut).join("\n");
         System.out.println(result);
     }
 }
