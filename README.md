@@ -4,9 +4,9 @@ This repository has the simulated implementation of different unix-tools `wc, cu
 tail, sort, uniq` and also one extra functionality that is `reduceSpaces`.
 
 # How To Install and Use.
-* Copy the run-scripts folder in your machine.
-* Set the path of run-scripts as environment variable in your machine.
-* Copy the jar file in run-scripts.
+* Copy the run-scripts/Given Folder folder in your machine.
+* Set the path of run-scripts/Given Folder as environment variable in your machine.
+* Copy the jar file in run-scripts/Given Folder.
 
 
 ## wc :
