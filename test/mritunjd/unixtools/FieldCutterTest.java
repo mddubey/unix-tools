@@ -5,10 +5,10 @@ import org.junit.Test;
 
 public class FieldCutterTest {
     @Test
-    public void testCutLinesForGivenField() throws Exception {
-        String input = "Abhi abhiu\nKabhi Kabhiu\nAditi Aditiu";
+    public void TestCutsLineForSingleFieldFromGivenText() throws Exception {
+        String input = "Mritunjay 123\nDigvijay 234\nRaaz 420";
         FieldCutter cutter = new FieldCutter(input);
-        String[] expected = {"abhiu", "Kabhiu", "Aditiu"};
+        String[] expected = {"123", "234", "420"};
         int[] fields = {2};
         String[] actual = cutter.cutLines(fields, " ");
 
@@ -16,10 +16,10 @@ public class FieldCutterTest {
     }
 
     @Test
-    public void testCutLinesForGivenFields() throws Exception {
-        String text = "Abhi\tabhiu\nKabhi\tKabhiu\nAditi\tAditiu\n";
+    public void testCutsLineForTwoFieldsFromGivenText() throws Exception {
+        String text = "Mummy\tShweta\nShital\tManali\nSameeksha\tKavita";
         FieldCutter cutter = new FieldCutter(text);
-        String[] expected = {"Abhi\tabhiu", "Kabhi\tKabhiu", "Aditi\tAditiu"};
+        String[] expected = {"Mummy\tShweta", "Shital\tManali", "Sameeksha\tKavita"};
         int[] fields = {1, 2};
 
         String[] actual = cutter.cutLines(fields, "\t");
