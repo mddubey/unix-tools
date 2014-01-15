@@ -12,13 +12,13 @@ public class MyFileReader {
             while ((line = br.readLine()) != null) {
                 sb.append(line).append("\r\n");
             }
-            return sb.toString().trim();
         } catch (FileNotFoundException e){
             System.err.println("File not Found");
-            return "";
+            System.exit(1);
         } catch (IOException e) {
             System.err.println("unable to Read");
-            return "";
+            System.exit(1);
         }
+        return sb.toString().trim();
     }
 }
