@@ -12,6 +12,7 @@ public class MyArray {
         for (String line : lines) {
             sb.append(line).append(delimeter);
         }
-        return sb.toString();
+        String text = sb.toString();
+        return text.substring(0, text.length() - 1);
     }
 }
