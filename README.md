@@ -19,11 +19,11 @@ tail, sort, uniq` and also one extra functionality that is `reduceSpaces`.
     options:- -f'1,2,3', -d','
 
 ## head:
-#### Head gives the first `n` lines from the given files.
+#### Head gives the first `n` lines from the given file.
     * md_head.sh [-noOfLines] filename
 
 ## tail:
-#### Tail gives the first `n` lines from the given files.
+#### Tail gives the last `n` lines from the given file.
     * md_tail.sh [-noOfLines] filename
 
 
