@@ -21,7 +21,7 @@ public class TextSorterClient {
     public static void main(String[] args) {
         if (args.length < 1) {
             System.err.println("Arguments not found....");
-            System.err.println("Usage:  FieldCutterClient    File Name  [Option]");
+            System.err.println("Usage:  TextSorterClient    File Name  [Option]");
             System.exit(1);
         }
         File file = new File(args[0]);

@@ -19,7 +19,7 @@ public class WcClient {
     }
 
     public static void main(String[] args) {
-        if(args.length < 1){
+        if (args.length < 1) {
             System.err.println("Arguments not found....");
             System.err.println("Usage:  WcClient  [Option]    [File Name]");
             System.exit(1);
@@ -27,6 +27,12 @@ public class WcClient {
         File file = new File(args[0]);
         WcClient cli = new WcClient(file);
         WC wc = cli.getWc();
-        System.out.println("\t" + wc.countLines() + "\t" + wc.countWords() + "\t" + wc.countChars() + "\t" + file.getName());
+        StringBuilder resultLine = new StringBuilder("");
+        resultLine.append("\t").append(wc.countLines());
+        resultLine.append("\t").append(wc.countWords());
+        resultLine.append("\t").append(wc.countChars());
+        resultLine.append("\t").append(file.toString());
+        System.out.println(resultLine.toString());
+//        System.out.println("" + "\t" + wc.countLines() + "\t" + wc.countWords() + "\t" + wc.countChars() + "\t" + file.toString());
     }
 }
