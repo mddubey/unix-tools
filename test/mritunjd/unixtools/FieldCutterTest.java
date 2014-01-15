@@ -8,7 +8,7 @@ public class FieldCutterTest {
     public void testCutLinesForGivenField() throws Exception {
         String input = "Abhi abhiu\nKabhi Kabhiu\nAditi Aditiu";
         FieldCutter cutter = new FieldCutter(input);
-        String[] expected = {"abhiu","Kabhiu","Aditiu"};
+        String[] expected = {"abhiu", "Kabhiu", "Aditiu"};
         int[] fields = {2};
         String[] actual = cutter.cutLines(fields, " ");
 
@@ -19,7 +19,7 @@ public class FieldCutterTest {
     public void testCutLinesForGivenFields() throws Exception {
         String text = "Abhi\tabhiu\nKabhi\tKabhiu\nAditi\tAditiu\n";
         FieldCutter cutter = new FieldCutter(text);
-        String[] expected = {"Abhi\tabhiu","Kabhi\tKabhiu","Aditi\tAditiu"};
+        String[] expected = {"Abhi\tabhiu", "Kabhi\tKabhiu", "Aditi\tAditiu"};
         int[] fields = {1, 2};
 
         String[] actual = cutter.cutLines(fields, "\t");
@@ -33,7 +33,7 @@ public class FieldCutterTest {
                 "2 Sita fail \n" +
                 "3 him her sad dad bad \n" +
                 "4 That This \n";
-        String[] expected = {"","","sad dad",""};
+        String[] expected = {"", "", "sad dad", ""};
         int[] fields = {4, 5};
 
         String[] actual = new FieldCutter(text).cutLines(fields, " ");
@@ -46,7 +46,7 @@ public class FieldCutterTest {
         String input = "Mritunjay 123 UP India\nPrateek 490 Delhi India\nManish 230 UP India";
         String[] expected = {"Mritunjay 123", "Prateek 490", "Manish 230"};
         FieldCutter cutter = new FieldCutter(input);
-        int[] fieldNos = {1,2};
+        int[] fieldNos = {1, 2};
         String[] actual = cutter.cutLines(fieldNos, " ");
 
         Assert.assertArrayEquals(expected, actual);
