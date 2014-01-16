@@ -12,16 +12,26 @@
         <mkdir dir = "unix-tools"/>
         <mkdir dir = "unix-tools/lib"/>
         <mkdir dir = "unix-tools/bin"/>
+        <mkdir dir = "unix-tools/docs"/>
         <copy todir = "unix-tools/bin">
             <fileset dir = "run-scripts"/>
         </copy>
         <copy file = "README.md" tofile = "unix-tools/README.md"/>
     </target>
+
     <target name = "createJar" depends = "compile,createFolderStructer">
         <jar destfile = "unix-tools/lib/unix-tools.jar" basedir = "classes"/>
     </target>
 
-    <target name = "createZip" depends = "createJar,compile,createFolderStructer">
+    <target name = "generateDocs">
+        <javadoc packagenames = "mritunjd.unixtools.*"
+                 sourcepath = "src"
+                 destdir = "unix-tools/docs"
+                 author  = "true" version = "true"/>
+    </target>
+
+    <target name = "createZip" depends = "createJar,compile,createFolderStructer,generateDocs">
         <zip destfile = "unix-tools.zip" basedir = "unix-tools" update = "true"/>
+        <delete dir = "unix-tools"/>
     </target>
 </project>
