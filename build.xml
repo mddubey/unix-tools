@@ -1,5 +1,5 @@
-<project name = "unix-tools">
-    <target name = "clear">
+<project name = "unix-tools" default = "createZip">
+    <target name = "clean">
         <delete dir = "classes"/>
     </target>
 
@@ -34,4 +34,21 @@
         <zip destfile = "unix-tools.zip" basedir = "unix-tools" update = "true"/>
         <delete dir = "unix-tools"/>
     </target>
+
+    <!--<path id="classpath">-->
+        <!--<fileset dir="dependencies" includes="*.jar"/>-->
+    <!--</path>-->
+
+    <!--<target name= "compileTests" depends="compile">-->
+        <!--<javac srcdir = "test" destdir= "classes" classpathref = "classpath" includeAntRuntime = "false"/>-->
+    <!--</target>-->
+
+    <!--<target name = "runTests" depends = "compileTests">-->
+        <!--<java classname = "junit.textui.TestRunner">-->
+            <!--<classpath>-->
+                <!--<path refid = "classpath"/>-->
+                <!--<path location = "unix-tools/lib/unix-tools.jar"/>-->
+            <!--</classpath>-->
+        <!--</java>-->
+    <!--</target>-->
 </project>
