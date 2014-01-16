@@ -2,7 +2,7 @@ package mritunjd.unixtools.cli;
 
 public class CutInputOptions {
     private String filename;
-    private int[] fieldNo = {1};
+    private int[] fields = {1};
     private String delimiter = " ";
 
     CutInputOptions(String[] inputs) {
@@ -15,7 +15,7 @@ public class CutInputOptions {
                 for (int i = 0; i < fieldsAsStrings.length; i++) {
                     fieldsAsNumeric[i] = Integer.parseInt(fieldsAsStrings[i]);
                 }
-                this.fieldNo = fieldsAsNumeric;
+                this.fields = fieldsAsNumeric;
             } else this.filename = input;
         }
     }
@@ -24,8 +24,8 @@ public class CutInputOptions {
         return filename;
     }
 
-    public int[] getFieldNo() {
-        return fieldNo;
+    public int[] getFields() {
+        return fields;
     }
 
     public String getDelimiter() {

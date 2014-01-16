@@ -27,7 +27,7 @@ public class FieldCutterClient {
         File file = new File(userInputs.getFilename());
         String text = new MyFileReader().readFile(file);
         FieldCutter cutter = new FieldCutterClient(text).getCutter();
-        String[] linesAfterCut = cutter.cutLines(userInputs.getFieldNo(), userInputs.getDelimiter());
+        String[] linesAfterCut = cutter.cutLines(userInputs.getFields(), userInputs.getDelimiter());
         String result = new MyArray(linesAfterCut).join("\n");
         System.out.println(result);
     }

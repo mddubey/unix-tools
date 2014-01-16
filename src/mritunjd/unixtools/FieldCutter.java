@@ -9,22 +9,28 @@ public class FieldCutter {
 
     public String[] cutLines(int[] fieldNumbers, String delimiter) {
         String linesInText[] = text.split("\n");
+        if(!text.contains(delimiter))
+            return linesInText;
         int index = 0;
         String[] resultLines = new String[linesInText.length];
         for (String line : linesInText) {
-            StringBuilder lineToReturn = new StringBuilder("");
             String[] fieldsInLine = line.split(delimiter);
-            for (int fieldNo : fieldNumbers) {
-                if (fieldNo <= fieldsInLine.length){
-                    lineToReturn.append(fieldsInLine[fieldNo - 1]);
-                    lineToReturn.append(delimiter);
-                }
-            }
-            String lineAsString = lineToReturn.toString();
-            if(lineAsString.length()>0)
-                lineAsString = lineAsString.substring(0,lineAsString.length()-1);
-            resultLines[index++] = lineAsString;
+            StringBuilder fieldsAsLine = getAllRequireFields(fieldNumbers, delimiter, fieldsInLine);
+            if(fieldsAsLine.length()>0)
+                fieldsAsLine.setLength(fieldsAsLine.length() - 1);
+            resultLines[index++] = fieldsAsLine.toString();
         }
         return resultLines;
+    }
+
+    private StringBuilder getAllRequireFields(int[] fieldNumbers, String delimiter, String[] fieldsInLine) {
+        StringBuilder fieldsAsLine = new StringBuilder("");
+        for (int fieldNo : fieldNumbers) {
+            if (fieldNo <= fieldsInLine.length){
+                fieldsAsLine.append(fieldsInLine[fieldNo - 1]);
+                fieldsAsLine.append(delimiter);
+            }
+        }
+        return fieldsAsLine;
     }
 }

@@ -21,7 +21,7 @@ public class CutInputOptionsTest {
         CutInputOptions userInput = new CutInputOptions(parameters);
         int[] expectedFields = {1, 2, 3};
 
-        int[] actualFields = userInput.getFieldNo();
+        int[] actualFields = userInput.getFields();
 
         Assert.assertArrayEquals(expectedFields, actualFields);
 
@@ -48,7 +48,7 @@ public class CutInputOptionsTest {
 
         String actualDelimiter = userInput.getDelimiter();
         String actualFileName = userInput.getFilename();
-        int[] actualFields = userInput.getFieldNo();
+        int[] actualFields = userInput.getFields();
 
         Assert.assertEquals(expectedDelimiter, actualDelimiter);
         Assert.assertEquals(expectedFileName, actualFileName);
@@ -65,7 +65,7 @@ public class CutInputOptionsTest {
 
         String actualDelimiter = userInput.getDelimiter();
         String actualFileName = userInput.getFilename();
-        int[] actualFields = userInput.getFieldNo();
+        int[] actualFields = userInput.getFields();
 
         Assert.assertEquals(expectedDelimiter, actualDelimiter);
         Assert.assertEquals(expectedFileName, actualFileName);
