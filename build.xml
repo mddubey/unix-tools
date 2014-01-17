@@ -27,7 +27,7 @@
         <javadoc packagenames = "mritunjd.unixtools.*"
                  sourcepath = "src"
                  destdir = "unix-tools/docs"
-                 author  = "true" version = "true"/>
+                 author = "true" version = "true"/>
     </target>
 
     <target name = "createZip" depends = "createJar,compile,createFolderStructer,generateDocs">
@@ -35,20 +35,20 @@
         <delete dir = "unix-tools"/>
     </target>
 
-    <!--<path id="classpath">-->
-        <!--<fileset dir="dependencies" includes="*.jar"/>-->
-    <!--</path>-->
+    <path id="classpath">
+        <fileset dir="dependencies" includes="*.jar"/>
+    </path>
 
-    <!--<target name= "compileTests" depends="compile">-->
-        <!--<javac srcdir = "test" destdir= "classes" classpathref = "classpath" includeAntRuntime = "false"/>-->
-    <!--</target>-->
+    <target name= "compileTests" depends="compile">
+        <javac srcdir = "test" destdir= "classes" classpathref = "classpath" includeAntRuntime = "false"/>
+    </target>
 
-    <!--<target name = "runTests" depends = "compileTests">-->
-        <!--<java classname = "junit.textui.TestRunner">-->
-            <!--<classpath>-->
-                <!--<path refid = "classpath"/>-->
-                <!--<path location = "unix-tools/lib/unix-tools.jar"/>-->
-            <!--</classpath>-->
-        <!--</java>-->
-    <!--</target>-->
+    <target name = "runTests" depends = "compileTests">
+        <java classname = "junit.textui.TestRunner">
+            <classpath>
+                <path refid = "classpath"/>
+                <path location = "out/lib/unix-tools.jar"/>
+            </classpath>
+        </java>
+    </target>
 </project>
