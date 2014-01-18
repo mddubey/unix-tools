@@ -20,7 +20,7 @@ public class WCTest {
     public void testCountLines() throws Exception {
         String input = "I am Mritunjay.\n Prateek is Here.\nhow r You?";
         WC wc = new WC(input);
-        int expected = 3;
+        int expected = 2;
 
         int actual = wc.countLines();
 
