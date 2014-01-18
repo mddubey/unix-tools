@@ -1,10 +1,11 @@
-<project name = "unix-tools">  <!--default = "createZip"-->
+<project name = "unix-tools" default = "runTest">
+    <target name = "clean">
+        <delete dir = "build"/>
+    </target>
+
     <target name="init">
         <mkdir dir="build/classes/test"/>
         <mkdir dir="build/classes/src"/>
-    </target>
-    <target name = "clean">
-        <delete dir = "build"/>
     </target>
 
     <target name = "compile" depends = "init">
@@ -22,21 +23,46 @@
     </target>
 
     <target name="runTest" depends="compileTest">
-        <java classname="org.junit.runner.JUnitCore"
-              classpath="dependencies/test/junit-4.10.jar;build/classes/src/;
-              build/classes/test/">
-            <arg value="mritunjd.unixtools.FieldCutterTest"/>
-            <arg value="mritunjd.unixtools.HeadTest"/>
-            <arg value="mritunjd.unixtools.SpaceReducerTest"/>
-            <arg value="mritunjd.unixtools.TailTest"/>
-            <arg value="mritunjd.unixtools.TextSorterTest"/>
-            <arg value="mritunjd.unixtools.UniqTest"/>
-            <arg value= "mritunjd.unixtools.WCTest"/>
-            <arg value="mritunjd.unixtools.cli.CutInputOptionsTest"/>
-            <arg value="mritunjd.unixtools.cli.InputOptionsTest"/>
-            <arg value="mritunjd.unixtools.helper.MyArrayTest"/>
-        </java>
+        <junit>
+            <classpath>
+                <pathelement location="build/classes/src" />
+                <pathelement location="build/classes/test" />
+                <pathelement location="dependencies/test/junit-4.10.jar"/>
+            </classpath>
+            <batchtest>
+                <fileset dir="build/classes/test">
+                    <include name="**/*Test*" />
+                </fileset>
+            </batchtest>
+            <formatter type = "brief" usefile = "false"/>
+        </junit>
     </target>
 
+    <!--<target name = "createFolderStructer">-->
+    <!--<mkdir dir = "unix-tools"/>-->
+    <!--<mkdir dir = "unix-tools/lib"/>-->
+    <!--<mkdir dir = "unix-tools/bin"/>-->
+    <!--<mkdir dir = "unix-tools/docs"/>-->
+    <!--<copy todir = "unix-tools/bin">-->
+    <!--<fileset dir = "run-scripts"/>-->
+    <!--</copy>-->
+    <!--<copy file = "README.md" tofile = "unix-tools/README.md"/>-->
+    <!--</target>-->
+
+    <!--<target name = "createJar" depends = "compile,createFolderStructer">-->
+    <!--<jar destfile = "unix-tools/lib/unix-tools.jar" basedir = "classes"/>-->
+    <!--</target>-->
+
+    <!--<target name = "generateDocs">-->
+    <!--<javadoc packagenames = "mritunjd.unixtools.*"-->
+    <!--sourcepath = "src"-->
+    <!--destdir = "unix-tools/docs"-->
+    <!--author = "true" version = "true"/>-->
+    <!--</target>-->
+
+    <!--<target name = "createZip" depends = "createJar,generateDocs">-->
+    <!--<zip destfile = "unix-tools.zip" basedir = "unix-tools" update = "true"/>-->
+    <!--<delete dir = "unix-tools"/>-->
+    <!--</target>-->
 
 </project>
