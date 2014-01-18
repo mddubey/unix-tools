@@ -3,6 +3,10 @@
         <delete dir = "build"/>
     </target>
 
+    <target name = "clearClasses">
+        <delete dir = "build/classes"/>
+    </target>
+
     <target name="init">
         <mkdir dir="build/classes/test"/>
         <mkdir dir="build/classes/src"/>
@@ -11,11 +15,6 @@
     <target name = "compile" depends = "init">
         <javac srcdir = "src" destdir = "build/classes/src" includeAntRuntime = "false"/>
     </target>
-
-    <path id="classpath">
-        <fileset dir="dependencies/test" includes="*.jar"/>
-        <fileset dir="build/classes/src" includes="*.class"/>
-    </path>
 
     <target name = "compileTest" depends = "compile">
         <javac srcdir = "test" destdir= "build/classes/test"
@@ -38,31 +37,28 @@
         </junit>
     </target>
 
-    <!--<target name = "createFolderStructer">-->
-    <!--<mkdir dir = "unix-tools"/>-->
-    <!--<mkdir dir = "unix-tools/lib"/>-->
-    <!--<mkdir dir = "unix-tools/bin"/>-->
-    <!--<mkdir dir = "unix-tools/docs"/>-->
-    <!--<copy todir = "unix-tools/bin">-->
-    <!--<fileset dir = "run-scripts"/>-->
-    <!--</copy>-->
-    <!--<copy file = "README.md" tofile = "unix-tools/README.md"/>-->
-    <!--</target>-->
+    <target name = "createFolderStructer" depends="runTest">
+        <mkdir dir="build/distribute/bin"/>
+        <mkdir dir="build/distribute/lib"/>
+        <copy todir = "build/distribute/bin">
+            <fileset dir = "run-scripts"/>
+        </copy>
+        <copy file = "README.md" tofile = "build/distribute/README.md"/>
+    </target>
 
-    <!--<target name = "createJar" depends = "compile,createFolderStructer">-->
-    <!--<jar destfile = "unix-tools/lib/unix-tools.jar" basedir = "classes"/>-->
-    <!--</target>-->
+    <target name = "build" depends = "createFolderStructer">
+        <jar destfile = "build/distribute/lib/unix-tools.jar" basedir = "build/classes/src"/>
+    </target>
 
-    <!--<target name = "generateDocs">-->
-    <!--<javadoc packagenames = "mritunjd.unixtools.*"-->
-    <!--sourcepath = "src"-->
-    <!--destdir = "unix-tools/docs"-->
-    <!--author = "true" version = "true"/>-->
-    <!--</target>-->
+    <target name = "docs" depends="build">
+        <javadoc packagenames = "mritunjd.unixtools.*"
+        sourcepath = "src"
+        destdir = "build/distribute/docs"
+        author = "true" version = "true"/>
+    </target>
 
-    <!--<target name = "createZip" depends = "createJar,generateDocs">-->
-    <!--<zip destfile = "unix-tools.zip" basedir = "unix-tools" update = "true"/>-->
-    <!--<delete dir = "unix-tools"/>-->
-    <!--</target>-->
+    <target name = "dist" depends = "docs">
+        <zip destfile = "unix-tools.zip" basedir = "build/distribute" update = "true"/>
+    </target>
 
 </project>

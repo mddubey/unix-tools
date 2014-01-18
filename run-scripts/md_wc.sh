@@ -1,1 +1,1 @@
-java -cp ${UNIX_TOOLS}/unix-tools.jar mritunjd.unixtools.cli.WcClient $@
+java -cp ${UNIX_TOOLS}/lib/unix-tools.jar mritunjd.unixtools.cli.WcClient $@
