@@ -1,6 +1,9 @@
 .idea
 *.class
 *.iml
+build/
+*.ser
+*.zip
 out/
 *.txt
 # Package Files #
