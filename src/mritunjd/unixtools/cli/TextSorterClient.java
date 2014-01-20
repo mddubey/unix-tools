@@ -27,11 +27,7 @@ public class TextSorterClient {
         File file = new File(args[0]);
         String text = new MyFileReader().readFile(file);
         TextSorter sorter = new TextSorterClient(text).getSorter();
-        String[] sortedLines;
-        if (args.length > 1 && "-r".equals(args[1]))
-            sortedLines = sorter.getReverseSortedLines();
-        else
-            sortedLines = sorter.getSortedLines();
+        String[] sortedLines = sorter.performSort(args);
         String sortedText = new MyArray(sortedLines).join("\n");
         System.out.println(sortedText);
     }

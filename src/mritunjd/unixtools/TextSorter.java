@@ -22,9 +22,10 @@ public class TextSorter {
         return sortedLines;
     }
 
-    public String[] sortNumerically() {
-        String[] lines = text.split("\n");
-        Collections.sort(Arrays.asList(lines));
-        return lines;
+    public String[] performSort(String[] args) {
+        if (args.length > 1 && "-r".equals(args[1]))
+            return getReverseSortedLines();
+        else
+            return getSortedLines();
     }
 }

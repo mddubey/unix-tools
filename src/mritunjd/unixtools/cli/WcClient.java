@@ -27,12 +27,6 @@ public class WcClient {
         File file = new File(args[0]);
         WcClient cli = new WcClient(file);
         WC wc = cli.getWc();
-        StringBuilder resultLine = new StringBuilder("");
-        resultLine.append("\t").append(wc.countLines());
-        resultLine.append("\t").append(wc.countWords());
-        resultLine.append("\t").append(wc.countChars());
-        resultLine.append("\t").append(file.toString());
-        System.out.println(resultLine.toString());
-//        System.out.println("" + "\t" + wc.countLines() + "\t" + wc.countWords() + "\t" + wc.countChars() + "\t" + file.toString());
+        System.out.println(wc.formatOutput(file.toString()));
     }
 }

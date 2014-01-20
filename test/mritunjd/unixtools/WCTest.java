@@ -37,4 +37,15 @@ public class WCTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void testGivesTheProperFormatedOutput() throws Exception {
+        String input = "I am Mritunjay.\nPrateek is Here.\nhow r You?";
+        WC wc = new WC(input);
+        String expected = "\t2\t10\t43\tsomeGarbage";
+
+        String actual = wc.formatOutput("someGarbage");
+
+        assertEquals(expected, actual);
+    }
 }

@@ -18,4 +18,13 @@ public class WC {
     public int countChars() {
         return text.length();
     }
+
+    public String formatOutput(String fileName) {
+        StringBuilder resultLine = new StringBuilder("");
+        resultLine.append("\t").append(countLines());
+        resultLine.append("\t").append(countWords());
+        resultLine.append("\t").append(countChars());
+        resultLine.append("\t").append(fileName);
+        return resultLine.toString();
+    }
 }
