@@ -124,6 +124,7 @@
             <fileset dir = "run-scripts"/>
         </copy>
         <copy file = "README.md" tofile = "build/distribute/README.md"/>
+        <copy file = "user.config" tofile = "build/distribute/user.config"/>
     </target>
 
     <target name = "build" depends = "createFolderStructer">
@@ -138,7 +139,7 @@
     </target>
 
     <target name = "dist" depends = "docs">
-        <zip destfile = "unix-tools.zip" basedir = "build/distribute" update = "true"/>
+        <zip destfile = "build/unix-tools.zip" basedir = "build/distribute" update = "true"/>
     </target>
 
 </project>
